@@ -7,21 +7,38 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="prueba">
+        <input type="text" id="texto" value="10">
+
+    </div>
 
     <div id="app">
-        Hola
+        Hola {{numero}}
     </div>
     
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script id="mitemplate" type="x-template">
+        <div>
+            Hola mundo desde un x-template
+        </div>
+</script>
+
 <script>
 var app = new Vue({
     el:"#app",
     data:{
-        numero: 2
+        numero: "2"
     },
-    template: "<div>{{numero}}</div>"
+    //template: "#mitemplate"
     
 });
 </script>
+
+<script>
+    app.$data.numero = document.getElementById("texto").value;
+</script>
+
+
 </html>

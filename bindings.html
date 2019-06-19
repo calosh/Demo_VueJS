@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{uno+dos}}</p>
+        <p> {{uno*dos}}</p>
+        <p> {{uno*uno === 2 ? si:no}}</p>
+        <p>{{no.toUpperCase()}}</p>
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                uno: 1,
+                dos: 2,
+                si: "Si",
+                no: "No",
+                bandera: true
+            },
+        });
+    </script>
+</html>

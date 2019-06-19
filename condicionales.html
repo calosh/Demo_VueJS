@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <h2>v-show</h2>
+            <p>1: <span v-show="si">Si</span></p>
+            <p>2: <span v-show="no">No</span></p>
+            <p>3: <span v-show="si==si">Si</span></p>
+            <p>4: <span v-show="si==no">No</span></p>
+            <p>5: <span v-show="si_1==no_1">No</span></p>
+        </div>
+        <div>
+            <h2>v-if</h2>
+            <p>1: <span v-if="si">Si</span></p>
+            <p>2: <span v-if="no">No</span></p>
+        </div>
+        <div>
+            <h2>v-if -- v-else</h2>
+            <p v-if="no">1: if</p>
+            <p v-else-if="no">2: else-if</p>
+            <p v-else>3: else</p>
+        </div>
+
+        <div>
+            <h2>Template</h2>
+            <div>
+                <template v-if="si">
+                    <p>Template si</p>
+                </template>
+                <template v-if="no">
+                    <p>Template no</p>
+                </template>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data:{
+                si: true,
+                no: false,
+                si_1: "si",
+                no_1: "no",
+            }
+        });
+    </script>
+</html>

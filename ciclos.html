@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <!-- :key="i.clave" se utiliza para realizar el seguimiento adecuado de los elementos de un arreglo -->
+            <li v-for="i in lista" :key="i.clave">{{i.clave}}--{{i.nombre}}</li>
+        </ul>
+        <h2>Lista 2</h2>
+        <p>
+            <span v-for="(i, k) in lista2">
+                <span v-if="k==lista2.length-1">y</span>
+                {{i}}
+                <span v-if="k<lista2.length-2">,</span>
+            </span>
+        </p>
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                lista: [
+                    {clave:1, nombre:"Luis"},
+                    {clave:2, nombre:"Marco"},
+                    {clave:3, nombre:"Alejandro"},
+                    {clave:4, nombre:"Jose"}
+                ],
+                lista2: [1,2,3,4,5,6,7,8,9]
+            }
+        });
+    </script>
+
+</html>

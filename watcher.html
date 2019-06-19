@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <p>Realiza la busqueda con api y guarda en historial las consuktas previas</p>
+        <label>Busqueda:</label>
+        <input type="text" v-model="searchText">
+        <h4>Resultados: {{results.count}}</h4>
+        <ul>
+            <li v-for="result in results.results">{{result.name}}</li>
+        </ul>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            searchText:"",
+            results:[],
+            history: {}
+        },
+        methods:{
+            search: function(){
+                axios.get(`https://swapi.co/api/starships/?search=${this.searchText}`)
+                .then(response =>{
+                    this.results = response.data;
+                    this.history[this.searchText] = this.results;
+                });
+            }
+        },
+        watch:{
+            searchText: function(nuevo, antiguo){
+                if(this.history[nuevo]){
+                    this.results = this.history[nuevo];
+                }else{
+                    this.search();
+                }
+                
+            }
+        }
+    });
+</script>
+</html>

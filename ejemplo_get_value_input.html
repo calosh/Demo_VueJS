@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>Permite obtener el valor de un input externo al elemento "el"</p>
+    <input type="text" id="numero">
+    <input type="button" id="boton" onclick="mi_click()" value="Enviar">
+    <div id="app">
+        {{numero}}
+    </div>
+</body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                numero:0
+            }
+        });
+    </script>
+        
+    <script>
+        function mi_click(){
+            numero = document.getElementById("numero").value;
+            app.$data.numero = numero
+        }
+    </script>
+</html>

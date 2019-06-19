@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-on:click="bandera=!bandera">Evento click (Toggle)</h1>
+        <p v-show="bandera">Hola mundo</p>
+        <h2 v-on:click="evento">Evento click con método</h2>
+        <p v-show="bandera">Hola mundo 2</p>
+        <h2 v-on:click="evento2(true)">Presentar</h2>
+        <h2 v-on:click="evento2(false)">Ocultar</h2>
+        <p v-show="bandera">Hola mundo 2</p>
+        <p></p>
+        <h2 v-on:click="evento3(true, $event)">Presentar (tipo evento)</h2>
+        <h2 v-on:click="evento3(false, $event)">Ocultar (tipo evento)</h2>
+        <p v-show="bandera">Hola mundo 3</p>
+        
+
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            bandera:true
+        },
+        methods:{
+            evento(){
+                this.bandera = !this.bandera;
+            },
+            evento2(valor){
+                this.bandera = valor;
+            },
+            evento3(valor, evento){
+                this.bandera = valor;
+                if(evento){
+                    console.log(evento.type);
+                }
+            }
+        }
+    });
+</script>
+</html>
